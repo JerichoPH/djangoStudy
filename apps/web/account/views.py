@@ -1,16 +1,18 @@
 from django.http import HttpResponse, HttpRequest
-from django.shortcuts import render
-
 
 # Create your views here.
+from django.urls import reverse
+
 
 def index(request: HttpRequest) -> HttpResponse:
-    return HttpResponse('用户列表')
+    resolver_match = request.resolver_match
+    print(f'{resolver_match.namespace}:{resolver_match.url_name}')
+    return HttpResponse(reverse('apps.web.account:index'))
 
 
 def show(request: HttpRequest, uuid: int) -> HttpResponse:
-    return HttpResponse(f'用户详情:{uuid}')
+    return HttpResponse(reverse('apps.web.account:show', kwargs={'uuid': uuid}))
 
 
 def article(request: HttpRequest, uid: int) -> HttpResponse:
-    return HttpResponse(f'文章：{uid}')
+    return HttpResponse(reverse('apps.web.account:article', kwargs={'uid': uid}))
