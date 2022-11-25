@@ -15,7 +15,8 @@ Including another URLconf
 """
 from django.urls import path, include
 
+apps_web_account = 'apps.web.account'
 urlpatterns = [
     # path('admin/', admin.site.urls),
-    path('account/', include(('apps.web.account.url', 'apps.web.account'))),
+    path('account/', include((f'{apps_web_account}.url', apps_web_account))),
 ]
