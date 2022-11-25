@@ -1,7 +1,23 @@
-from django.http import HttpResponse, HttpRequest
-
+from django.http import HttpRequest, HttpResponse, JsonResponse
+from django.shortcuts import render
+from django.template.loader import render_to_string
+from django.views.decorators.http import require_http_methods
 # Create your views here.
 from django.urls import reverse
+
+
+@require_http_methods(['GET'])
+def get_login(request: HttpRequest) -> HttpResponse:
+    content = render_to_string('web/account/login.html', None, request, using=None)
+    resp = HttpResponse(content)
+    resp['a'] = 'aaa'
+    return resp
+
+
+@require_http_methods(['POST'])
+def post_login(request: HttpRequest) -> HttpResponse:
+    print(request.COOKIES)
+    return JsonResponse(data={'msg': 'test'})
 
 
 def index(request: HttpRequest) -> HttpResponse:
