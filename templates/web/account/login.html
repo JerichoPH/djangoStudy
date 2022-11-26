@@ -1,7 +1,13 @@
+{% load tagTools %}
 <html>
 <head>
     <title>django学习</title>
 </head>
 <body>
+{% for i in a %}
+    {% times i 5 %}
+{% endfor %}
+<hr>
+{% paginator request data %}
 </body>
 </html>

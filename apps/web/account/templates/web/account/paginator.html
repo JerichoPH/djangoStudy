@@ -1,0 +1,10 @@
+<h1>{{ page.current }}</h1>
+<ul>
+    <li><a href="{{ url.original }}">首页</a></li>
+    {% if url.loop|length != 1 %}
+        {% for page,url in url.loop.items %}
+            <li><a href="{{ url }}">{{ page }}</a></li>
+        {% endfor %}
+    {% endif %}
+    <li><a href="{{ url.finished }}">尾页</a></li>
+</ul>
