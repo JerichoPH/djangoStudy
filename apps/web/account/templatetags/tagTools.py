@@ -23,6 +23,12 @@ def times(value, num=2):
     return value * num
 
 
+def _make_url(page: int, request: HttpRequest) -> str:
+    request_get = request.GET.dict()
+    request_get["page"] = page
+    return f"{request.path}?{urlencode(request_get)}"
+
+
 @register.inclusion_tag("web/account/paginator.html")
 def paginator(request: HttpRequest, data: Any):
     request_get = request.GET.dict()
@@ -42,14 +48,10 @@ def paginator(request: HttpRequest, data: Any):
     if page_previous < 1:
         page_previous = 1
 
-    request_get["page"] = page_next
-    url_next = f"{request.path}?{urlencode(request_get)}"
-    request_get["page"] = page_previous
-    url_previous = f"{request.path}?{urlencode(request_get)}"
-    request_get["page"] = 1
-    url_original = f"{request.path}?{urlencode(request_get)}"
-    request_get["page"] = page_max
-    url_finished = f"{request.path}?{urlencode(request_get)}"
+    url_next = _make_url(page_next, request)
+    url_previous = _make_url(page_previous, request)
+    url_original = _make_url(1, request)
+    url_finished = _make_url(page_max, request)
 
     if loop_times <= 0:
         loop_times = 1
@@ -59,11 +61,7 @@ def paginator(request: HttpRequest, data: Any):
     loop_finished = page_current + loop_times + 1
     if loop_finished > page_max:
         loop_finished = page_max + 1
-
-    urls = {}
-    for page in range(loop_original, loop_finished):
-        request_get["page"] = page
-        urls[page] = f"{request.path}?{urlencode(request_get)}"
+    urls = {page: _make_url(page, request) for page in range(loop_original, loop_finished)}
 
     pager = {
         "page": {"current": page_current, "size": page_size, "max": page_max, },
