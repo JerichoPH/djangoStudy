@@ -1,4 +1,4 @@
-{% extends 'web/layout/register.html' %}
+{% extends 'web/frontend/layout/register.html' %}
 {% block content %}
     <div class="register-box">
   <div class="register-logo">
@@ -49,7 +49,7 @@
         Google+</a>
     </div>
 
-    <a href="{% url 'apps.web.account:get_login' %}" class="text-center">I already have a membership</a>
+    <a href="{% url 'apps.web.frontend:__auth__get_login' %}" class="text-center">I already have a membership</a>
   </div>
   <!-- /.form-box -->
 </div>

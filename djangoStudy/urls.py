@@ -17,8 +17,8 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
-apps_web_account = 'apps.web.account'
+apps_web_frontend = 'apps.web.frontend'
 urlpatterns = [
-    # path('admin/', admin.site.urls),
-    path('account/', include((f'{apps_web_account}.url', apps_web_account))),
-]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  # path('admin/', admin.site.urls),
+                  path('', include(('apps.web.frontend.url', 'apps.web.frontend'))),
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

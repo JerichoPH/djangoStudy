@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps.api.v1',
     'apps.api.v2',
-    'apps.web.account',
+    'apps.web.frontend',
 ]
 
 MIDDLEWARE = [
@@ -56,9 +56,7 @@ ROOT_URLCONF = 'djangoStudy.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-        ],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
