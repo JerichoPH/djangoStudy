@@ -2,10 +2,8 @@ from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.shortcuts import render
 # Create your views here.
 from django.urls import reverse
-from django.views.decorators.http import require_http_methods
 
 
-@require_http_methods(["GET"])
 def get_login(request: HttpRequest) -> HttpResponse:
     return render(
         request,
@@ -66,10 +64,8 @@ def get_login(request: HttpRequest) -> HttpResponse:
     )
 
 
-@require_http_methods(["POST"])
-def post_login(request: HttpRequest) -> HttpResponse:
-    print(request.COOKIES)
-    return JsonResponse(data={"msg": "test"})
+def get_register(request: HttpRequest) -> HttpResponse:
+    return render(request, template_name='web/account/register.html')
 
 
 def index(request: HttpRequest) -> HttpResponse:

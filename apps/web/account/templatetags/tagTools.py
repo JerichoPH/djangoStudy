@@ -35,7 +35,7 @@ def paginator(request: HttpRequest, data: Any):
     page_size = int(request_get.get("page_size") or 1)
     page_current = int(request_get.get("page") or 1)
     loop_times = int(request_get.get("loop_times") or 5)
-    page_max = math.ceil(len(data) / page_size)
+    page_max = math.ceil(data.count() / page_size)
 
     if page_current < 1:
         page_current = 1
