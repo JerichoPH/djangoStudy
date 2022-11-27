@@ -49,6 +49,7 @@ MIDDLEWARE = [
     # 'django.contrib.auth.middleware.AuthenticationMiddleware',
     # 'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "apps.web.frontend.middlewares.checkPermissionMiddleware.CheckPermissionMiddleware",  # 检查用户权限是否可用
 ]
 
 ROOT_URLCONF = 'djangoStudy.urls'
@@ -146,6 +147,3 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 SESSION_COOKIE_AGE = 180
-
-
-

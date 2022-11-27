@@ -19,6 +19,6 @@ from django.conf import settings
 
 apps_web_frontend = 'apps.web.frontend'
 urlpatterns = [
-                  # path('admin/', admin.site.urls),
-                  path('', include(('apps.web.frontend.url', 'apps.web.frontend'))),
-              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    # path('admin/', admin.site.urls),
+    path('', include(('apps.web.frontend.url', 'apps.web.frontend'))),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

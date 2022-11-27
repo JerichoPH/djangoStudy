@@ -27,9 +27,9 @@ urlpatterns = [
 
     # 用户
     path("account/", view=account_view.index, name="__account__index"),
+    path("account/create/", view=account_view.create, name="__account__create"),
+    path("account/store/", view=account_view.store, name="__account__store"),
     path("account/<str:uuid>/", view=account_view.show, name="__account__show"),
-    path("account/<str:uuid>/update", view=account_view.show, name="__account__update"),
-    path("account/<str:uuid>/destroy", view=account_view.show, name="__account__destroy"),
-    path("account/create/", view=account_view.show, name="__account__create"),
-    path("account/store/", view=account_view.show, name="__account__store"),
+    path("account/<str:uuid>/update", view=account_view.update, name="__account__update"),
+    path("account/<str:uuid>/destroy", view=account_view.destroy, name="__account__destroy"),
 ]

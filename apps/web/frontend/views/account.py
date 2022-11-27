@@ -25,4 +25,3 @@ def update(request: HttpRequest, uuid: str) -> HttpResponse:
 
 def destroy(request: HttpRequest, uuid: str) -> HttpResponse:
     return HttpResponse(f"删除用户：{uuid}")
-
